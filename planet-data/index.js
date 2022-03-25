@@ -10,7 +10,7 @@ fs.createReadStream("kepler_data.csv")
     })
   )
   .on("data", (data) => {
-    results.push(data);
+    if (isHabitable(data)) results.push(data);
   })
   .on("error", (err) => {
     console.error(err);
@@ -18,3 +18,7 @@ fs.createReadStream("kepler_data.csv")
   .on("end", () => {
     console.log(results);
   });
+
+function isHabitable(planet) {
+  return planet["koi_disposition"] === "CONFIRMED";
+}
