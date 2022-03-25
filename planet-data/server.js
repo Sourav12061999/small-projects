@@ -11,12 +11,10 @@ const server = http.createServer((req, res) => {
     req.on("data", (data) => {
       const postData = data.toString();
       console.log(postData);
-      arr.push(postData);
+      arr.push(JSON.parse(postData));
     });
-  } else {
-    res.write("Don't know this url");
+    req.pipe(res);
   }
-  res.end();
 });
 
 server.listen(80, () => {
