@@ -7,5 +7,5 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "codebash2.png"));
 });
 app.listen(8080, () => {
-  console.log("Server started");
+  console.log(`Server started on port http://localhost:${8080}`);
 });
